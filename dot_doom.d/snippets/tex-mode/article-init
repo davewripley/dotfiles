@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: Article Init
+# key: article-init
+# --
+\documentclass{article}
+\usepackage[article]{ripley-preamble}
+
+\title{$0}
+\author{David Ripley\\\\Monash University\\\\davewripley@gmail.com}
+\begin{document}
+\maketitle
+
+
+
+\bibliographystyle{apalike}
+\bibliography{main}
+\end{document}

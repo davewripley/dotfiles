@@ -1,0 +1,4 @@
+0000000000000000000000000000000000000000 0f9f3f4e4717c604fe94e6488c7c066f82a60570 davewripley <davewripley@gmail.com> 1632518407 +1000	commit (initial): Initial commit.
+0f9f3f4e4717c604fe94e6488c7c066f82a60570 8a048864aec69aba9b3524404d5e0848947326a8 davewripley <davewripley@gmail.com> 1632519153 +1000	commit: Enable json and ocaml
+8a048864aec69aba9b3524404d5e0848947326a8 5ef144ce3fe13a808e946e86b3f689cf6756f549 davewripley <davewripley@gmail.com> 1632749514 +1000	commit: Reorganize config.el
+5ef144ce3fe13a808e946e86b3f689cf6756f549 26127f2e07f7116c92f6700e861899e1af634898 David Ripley <davewripley@gmail.com> 1633520260 +1100	commit: Set up on clean Big Sur install; a few tweaks

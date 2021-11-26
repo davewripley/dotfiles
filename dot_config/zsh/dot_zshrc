@@ -1,0 +1,56 @@
+export EDITOR=vim
+
+export PATH=/opt/homebrew/bin:$PATH #homebrew bins
+export PATH=/opt/homebrew/opt/findutils/libexec/gnubin:$PATH #GNU utils take priority
+
+export PATH=~/.emacs.d/bin:$PATH  #get doom on PATH
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH" #get ghcup on PATH
+
+# completion setup
+autoload -U compinit; compinit
+_comp_options+=(globdots)   #complete hidden files
+
+# load prompt
+fpath=($ZDOTDIR/prompt $fpath)
+autoload -Uz purification; purification
+
+# directory push/pop
+setopt AUTO_PUSHD         # push as we visit
+setopt PUSHD_IGNORE_DUPS  # ignore duplicates
+setopt PUSHD_SILENT       # do it quietly
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+# vim
+bindkey -v
+export KEYTIMEOUT=1  # speed up mode switch
+# make cursor change with mode
+cursor_mode() {
+    # See https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html for cursor shapes
+    cursor_block='\e[2 q'
+    cursor_beam='\e[6 q'
+
+    function zle-keymap-select {
+        if [[ ${KEYMAP} == vicmd ]] ||
+            [[ $1 = 'block' ]]; then
+            echo -ne $cursor_block
+        elif [[ ${KEYMAP} == main ]] ||
+            [[ ${KEYMAP} == viins ]] ||
+            [[ ${KEYMAP} = '' ]] ||
+            [[ $1 = 'beam' ]]; then
+            echo -ne $cursor_beam
+        fi
+    }
+
+    zle-line-init() {
+        echo -ne $cursor_beam
+    }
+
+    zle -N zle-keymap-select
+    zle -N zle-line-init
+}
+cursor_mode
+
+# alias
+alias rm='rm -i'
+alias fzf-open='fzf --bind "enter:execute(open {})"'
