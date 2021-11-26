@@ -54,3 +54,4 @@ cursor_mode
 # alias
 alias rm='rm -i'
 alias fzf-open='fzf --bind "enter:execute(open {})"'
+alias fzpdf='fd . ~/Dropbox/Pdf\ library | fzf --bind "enter:execute(open {})"'
