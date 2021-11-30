@@ -7,7 +7,10 @@ export EDITOR=vim
     # opam configuration
     [[ ! -r /Users/dave/.opam/opam-init/init.zsh ]] || source /Users/dave/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 {{- else if eq .computername "2021-mbp16" -}}
-
+    export PATH=/opt/homebrew/bin:$PATH #homebrew bins
+    export PATH=/opt/homebrew/opt/findutils/libexec/gnubin:$PATH #GNU utils take priority
+    export PATH=~/.emacs.d/bin:$PATH # get DOOM on path
+    export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH" #get ghcup on path
 {{- else if eq .computername "officemac" -}}
 
 {{- end}}
@@ -59,3 +62,4 @@ cursor_mode
 
 # alias
 alias rm='rm -i'
+alias fzf-open='fzf --bind "enter:execute(open {})"'
