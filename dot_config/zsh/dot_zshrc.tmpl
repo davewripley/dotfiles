@@ -1,10 +1,20 @@
 export EDITOR=vim
 
-export PATH=/opt/homebrew/bin:$PATH #homebrew bins
-export PATH=/opt/homebrew/opt/findutils/libexec/gnubin:$PATH #GNU utils take priority
+{{if eq .computername "2013-mbp13" -}}
+    export PATH=/usr/local/opt/grep/libexec/gnubin:$PATH  #GNU utils
+    export PATH=~/.emacs.d/bin:$PATH
+    [ -f "/Users/dave/.ghcup/env" ] && source "/Users/dave/.ghcup/env" # ghcup-env
+    # opam configuration
+    [[ ! -r /Users/dave/.opam/opam-init/init.zsh ]] || source /Users/dave/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+{{- else if eq .computername "2021-mbp16" -}}
+    export PATH=/opt/homebrew/bin:$PATH #homebrew bins
+    export PATH=/opt/homebrew/opt/findutils/libexec/gnubin:$PATH #GNU utils take priority
+    export PATH=~/.emacs.d/bin:$PATH # get DOOM on path
+    export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH" #get ghcup on path
+    export PATH="/opt/homebrew/opt/llvm/bin:$PATH" #put brew's llvm on path
+{{- else if eq .computername "officemac" -}}
 
-export PATH=~/.emacs.d/bin:$PATH  #get doom on PATH
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH" #get ghcup on PATH
+{{- end}}
 
 # completion setup
 autoload -U compinit; compinit
@@ -52,6 +62,5 @@ cursor_mode() {
 cursor_mode
 
 # alias
-alias rm='rm -i'
-alias fzf-open='fzf --bind "enter:execute(open {})"'
-alias fzpdf='fd . ~/Dropbox/Pdf\ library | fzf --bind "enter:execute(open {})"'
+alias fzf-open='fzf --exact --bind "enter:execute(open {})"'
+alias pdfzf='fd . ~/Dropbox/Pdf\ library | fzf --exact --bind "enter:execute(open {})"'
