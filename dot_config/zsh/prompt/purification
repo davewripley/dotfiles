@@ -123,7 +123,7 @@ prompt_purification_setup() {
     ZSH_THEME_GIT_PROMPT_UNMERGED="%F{yellow}═%f "
     ZSH_THEME_GIT_PROMPT_UNTRACKED="%F{white}?%f "
     ZSH_THEME_GIT_PROMPT_STASHED="%B%F{red}%f%b "
-    ZSH_THEME_GIT_PROMPT_BEHIND="%B%F{red}%f%b "
+    ZSH_THEME_GIT_PROMPT_BEHIND="%B%F{red}-%f%b "
     ZSH_THEME_GIT_PROMPT_AHEAD="%B%F{green}^%f%b "
 
     prompt_git_branch
