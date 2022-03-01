@@ -10,7 +10,7 @@ export PATH=~/.emacs.d/bin:$PATH   #put doom on path
 {{- else if eq .computername "2021-mbp16" -}}
     export PATH=/opt/homebrew/bin:$PATH #homebrew bins
     export PATH=/opt/homebrew/opt/findutils/libexec/gnubin:$PATH #GNU utils take priority
-    export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH" #get ghcup on path
+    export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH" #get cabal and ghcup on path
     export PATH="/opt/homebrew/opt/llvm/bin:$PATH" #put brew's llvm on path
 
     # check for Rosetta and set iterm profile if needed (otherwise go with default)
@@ -20,6 +20,7 @@ export PATH=~/.emacs.d/bin:$PATH   #put doom on path
     fi
 {{- else if eq .computername "officemac" -}}
     export PATH=/usr/local/opt/grep/libexec/gnubin:$PATH  #GNU utils
+    export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH" #cabal and ghcup on path
 {{- end}}
 
 # completion setup
