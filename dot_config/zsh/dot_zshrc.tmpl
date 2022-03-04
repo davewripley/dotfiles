@@ -11,7 +11,8 @@ export PATH=~/.emacs.d/bin:$PATH   #put doom on path
     export PATH=/opt/homebrew/bin:$PATH #homebrew bins
     export PATH=/opt/homebrew/opt/findutils/libexec/gnubin:$PATH #GNU utils take priority
     export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH" #get ghcup on path
-    export PATH="/opt/homebrew/opt/llvm/bin:$PATH" #put brew's llvm on path
+    export PATH="/opt/homebrew/opt/llvm@12/bin:$PATH" #put brew's llvm on path
+    export PATH="$HOME/.local/bin:$PATH" #to get yesod on path
 
     # check for Rosetta and set iterm profile if needed (otherwise go with default)
     if (uname -m | grep -q "x86")
