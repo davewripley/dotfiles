@@ -21,6 +21,7 @@ export PATH=~/.emacs.d/bin:$PATH   #put doom on path
     fi
 {{- else if eq .computername "officemac" -}}
     export PATH=/usr/local/opt/grep/libexec/gnubin:$PATH  #GNU utils
+    export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH" #cabal and ghcup on path
 {{- end}}
 
 # completion setup

@@ -1,0 +1,35 @@
+# -*- mode: snippet -*-
+# name: Beamer Init
+# key: beamer-init
+# --
+
+% !TEX TS-program = XeLaTeX
+\documentclass[compress]{beamer}
+\usepackage{etex}
+\usepackage[beamer]{ripley-preamble}
+
+\mode<presentation>
+{
+  \usetheme[background=light, sectionpage=simple, subsectionpage=none, block=fill]{metropolis_custom}
+  \setbeamertemplate{section in toc}{\huge\inserttocsection}
+  \setbeamertemplate{subsection in toc}{\begin{center} \Large \inserttocsubsection \end{center}}
+  \setbeamertemplate{subsection in toc shaded}{}
+}
+
+
+\usepackage[english]{babel}
+
+\title[]{${1:title}}
+\author[davewripley@gmail.com]{David Ripley}
+\institute[Monash]{Monash University\\\\http://davewripley.rocks}
+\date[]{}
+\begin{document}
+\begin{center}
+
+\begin{frame}[plain, noframenumbering]
+  \titlepage
+\end{frame}
+
+
+\end{center}
+\end{document}
