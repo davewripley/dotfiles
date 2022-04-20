@@ -7,6 +7,7 @@ export PATH=~/.emacs.d/bin:$PATH   #put doom on path
     [ -f "/Users/dave/.ghcup/env" ] && source "/Users/dave/.ghcup/env" # ghcup-env
     # opam configuration
     [[ ! -r /Users/dave/.opam/opam-init/init.zsh ]] || source /Users/dave/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+    export PATH="$HOME/.local/bin:$PATH" #to get yesod on path
 {{- else if eq .computername "2021-mbp16" -}}
     export PATH=/opt/homebrew/bin:$PATH #homebrew bins
     export PATH=/opt/homebrew/opt/findutils/libexec/gnubin:$PATH #GNU utils take priority
