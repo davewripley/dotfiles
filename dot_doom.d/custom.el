@@ -15,6 +15,9 @@
      . 0)
     (("#2b3d48" "#46D9FF" "brightcyan")
      . 20)))
+ '(ignored-local-variable-values
+   '((haskell-process-use-ghci . t)
+     (haskell-indent-spaces . 4)))
  '(jdee-db-active-breakpoint-face-colors (cons "#1B2229" "#51afef"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#1B2229" "#98be65"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#1B2229" "#3f444a"))
@@ -51,5 +54,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(font-latex-slide-title-face ((t (:weight normal))))
  '(font-lock-constant-face ((t (:weight normal))))
  '(font-lock-keyword-face ((t (:weight normal)))))
