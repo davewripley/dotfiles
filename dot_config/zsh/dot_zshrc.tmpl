@@ -26,6 +26,7 @@ export PATH=~/.emacs.d/bin:$PATH   #put doom on path
     export PATH="$HOME/.local/bin:$PATH" #to get yesod on path
 {{- else if eq .computername "retropie" -}}
     export PATH="/snap/bin:$PATH"
+    [ -f "/home/dave/.ghcup/env" ] && source "/home/dave/.ghcup/env"
 {{- end}}
 
 # completion setup
