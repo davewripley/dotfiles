@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: isabelle rule arrow
+# key: xrule
+# --
+\<Longrightarrow>

@@ -10,6 +10,8 @@
 ;(package! some-package)
 (package! citar)
 
+(package! ox-reveal)
+
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/raxod502/straight.el#the-recipe-format
@@ -40,6 +42,21 @@
 
 ;; Use `:pin' to specify a particular commit to install.
 ;(package! builtin-package :pin "1a2b3c4d5e")
+
+;; copied from https://github.com/m-fleury/isabelle-emacs/blob/Isabelle2021-more-vscode/src/Tools/emacs-lsp/spacemacs_layers/isabelle/README.org
+(package! isar-mode
+   :recipe (:local-repo "/Users/dave/Dropbox/programming/isar-mode"))
+
+(package! isar-goal-mode
+   :recipe (:local-repo "/Users/dave/Dropbox/programming/isar-mode"))
+
+(package! lsp-isar
+   :recipe (:local-repo "/Users/dave/Dropbox/programming/isabelle-emacs/src/Tools/emacs-lsp/lsp-isar"))
+
+(package! lsp-isar-parse-args
+   :recipe (:local-repo "/Users/dave/Dropbox/programming/isabelle-emacs/src/Tools/emacs-lsp/lsp-isar"))
+
+(package! session-async)
 
 
 ;; Doom's packages are pinned to a specific commit and updated from release to
