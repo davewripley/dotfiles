@@ -52,7 +52,11 @@
 ; * Frames
 ;; Set frame size---take up full screen, but be resizable
 (add-to-list 'initial-frame-alist '(width . 1.0))
-(add-to-list 'initial-frame-alist '(height . 60))
+{{ if eq .computername "2021-mbp16" -}}
+     (add-to-list 'initial-frame-alist '(height . 60))
+{{- else -}}
+     (add-to-list 'initial-frame-alist '(height . 80))
+{{- end }}
 (add-to-list 'initial-frame-alist '(left . 0))
 (add-to-list 'initial-frame-alist '(top . 0))
 
