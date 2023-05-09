@@ -110,8 +110,10 @@
   ("g" org-goto "goto" :exit t))
 
 (after! org
-;; get org to open isabelle code blocks in the right mode:
-    (add-to-list 'org-src-lang-modes '("isabelle" . isar))
+{{if eq .computername "2021-mbp16" -}}
+     ;; get org to open isabelle code blocks in the right mode:
+        (add-to-list 'org-src-lang-modes '("isabelle" . isar))
+{{- end}}
 ;; ox-reveal needed for org-reveal
     (load-library "ox-reveal")
 ;; let org-reveal know where reveal.js lives
@@ -182,50 +184,51 @@
 ; * agda
 (add-to-list 'auto-mode-alist '("\\.lagda.md\\'" . agda2-mode))
 
+{{if eq .computername "2021-mbp16" -}}
+    ; * isabelle
+    ; copied and modified from example at https://github.com/m-fleury/isabelle-emacs/blob/Isabelle2021-more-vscode/src/Tools/emacs-lsp/spacemacs_layers/isabelle/README.org
 
-; * isabelle
-; copied and modified from example at https://github.com/m-fleury/isabelle-emacs/blob/Isabelle2021-more-vscode/src/Tools/emacs-lsp/spacemacs_layers/isabelle/README.org
+    ;; Isabelle setup
+    (use-package! isar-mode
+      :mode "\\.thy\\'"
+      :config
+      ;; (add-hook 'isar-mode-hook 'turn-on-highlight-indentation-mode)
+      ;; (add-hook 'isar-mode-hook 'flycheck-mode)
+      (add-hook 'isar-mode-hook 'company-mode)
+      (add-hook 'isar-mode-hook 'display-line-numbers-mode)
+      (add-hook 'isar-mode-hook
+                (lambda ()
+                  (set (make-local-variable 'company-backends)
+                      '((company-dabbrev-code company-yasnippet)))))
+      (add-hook 'isar-mode-hook
+                (lambda ()
+                  (set (make-local-variable 'indent-tabs-mode) nil)))
+      (add-hook 'isar-mode-hook
+                (lambda ()
+                  (yas-minor-mode)))
+      )
 
-;; Isabelle setup
-(use-package! isar-mode
-  :mode "\\.thy\\'"
-  :config
-  ;; (add-hook 'isar-mode-hook 'turn-on-highlight-indentation-mode)
-  ;; (add-hook 'isar-mode-hook 'flycheck-mode)
-  (add-hook 'isar-mode-hook 'company-mode)
-  (add-hook 'isar-mode-hook 'display-line-numbers-mode)
-  (add-hook 'isar-mode-hook
-            (lambda ()
-              (set (make-local-variable 'company-backends)
-                   '((company-dabbrev-code company-yasnippet)))))
-  (add-hook 'isar-mode-hook
-            (lambda ()
-              (set (make-local-variable 'indent-tabs-mode) nil)))
-  (add-hook 'isar-mode-hook
-            (lambda ()
-              (yas-minor-mode)))
-  )
+    (use-package! lsp-isar-parse-args
+      :custom
+      (lsp-isar-parse-args-nollvm nil))
 
-(use-package! lsp-isar-parse-args
-  :custom
-  (lsp-isar-parse-args-nollvm nil))
+    (use-package! lsp-isar
+      :commands lsp-isar-define-client-and-start
+      :custom
+      (lsp-isar-output-use-async t)
+      (lsp-isar-output-time-before-printing-goal nil)
+      (lsp-isar-experimental t)
+      (lsp-isar-split-pattern 'lsp-isar-split-pattern-three-columns)
+      (lsp-isar-decorations-delayed-printing t)
+      :init
+      (add-hook 'lsp-isar-init-hook 'lsp-isar-open-output-and-progress-right-spacemacs)
+      (add-hook 'isar-mode-hook #'lsp-isar-define-client-and-start)
 
-(use-package! lsp-isar
-  :commands lsp-isar-define-client-and-start
-  :custom
-  (lsp-isar-output-use-async t)
-  (lsp-isar-output-time-before-printing-goal nil)
-  (lsp-isar-experimental t)
-  (lsp-isar-split-pattern 'lsp-isar-split-pattern-three-columns)
-  (lsp-isar-decorations-delayed-printing t)
-  :init
-  (add-hook 'lsp-isar-init-hook 'lsp-isar-open-output-and-progress-right-spacemacs)
-  (add-hook 'isar-mode-hook #'lsp-isar-define-client-and-start)
-
-  (push (concat "/Users/dave/Dropbox/programming/isabelle-emacs/src/Tools/emacs-lsp/yasnippet")
-   yas-snippet-dirs)
-  (setq lsp-isar-path-to-isabelle "/Users/dave/Dropbox/programming/isabelle-emacs")
-  )  ; looks for ~/.doom.d/my/package/my-package.el
+      (push (concat "/Users/dave/Dropbox/programming/isabelle-emacs/src/Tools/emacs-lsp/yasnippet")
+      yas-snippet-dirs)
+      (setq lsp-isar-path-to-isabelle "/Users/dave/Dropbox/programming/isabelle-emacs")
+      )  ; looks for ~/.doom.d/my/package/my-package.el
+{{- end}}
 
 
 
